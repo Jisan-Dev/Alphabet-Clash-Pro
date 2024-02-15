@@ -9,7 +9,13 @@ const continueGame = () => {
 
 const play = () => {
   hideElementById('home-screen');
+  hideElementById('scoreBoard');
   showElementById('play-ground');
+
+  // reset the life and score counts from previous rounds(if played)
+  document.getElementById('life').innerText = 5;
+  document.getElementById('score').innerText = 0;
+
   continueGame();
 };
 
@@ -19,6 +25,8 @@ const handleKeyboardKeyUp = (event) => {
     if (!document.getElementById('home-screen').classList.contains('hidden')) {
       play();
     }
+  } else if (playerPressed === 'Escape') {
+    gameOver();
   } else {
     // The 'key' player is expected to press according to big screen
     const currentAlphabetElement = document.getElementById('current-alphabet').innerText;
@@ -45,6 +53,17 @@ const handleKeyboardKeyUp = (event) => {
 const gameOver = () => {
   hideElementById('play-ground');
   showElementById('scoreBoard');
+
+  const lastScore = document.getElementById('score').innerText;
+  document.getElementById('final-score').innerText = lastScore;
+
+  // clear the last alphabet highlight on keyboard
+  const alphabet = document.getElementById('current-alphabet').innerText;
+  removeBackgroundColorById(alphabet);
+
+  // reset the life and score counts
+  // document.getElementById('life').innerText = 5;
+  // document.getElementById('score').innerText = 0;
 };
 
 document.addEventListener('keyup', handleKeyboardKeyUp);
