@@ -23,3 +23,8 @@ const setBackgroundColorById = (elementId, color) => {
   const element = document.getElementById(elementId);
   element.style.backgroundColor = color;
 };
+
+const removeBackgroundColorById = (elementId) => {
+  const element = document.getElementById(elementId);
+  element.style.backgroundColor = '';
+};
