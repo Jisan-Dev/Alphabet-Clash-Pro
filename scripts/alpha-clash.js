@@ -1,16 +1,9 @@
 const play = () => {
-  document.getElementById('home-screen').classList.add('hidden');
-  document.getElementById('play-ground').classList.remove('hidden');
+  hideElementById('home-screen');
+  showElementById('play-ground');
 
-  const alphabetString = 'abcdefghijklmnopqrstuvwxyz';
-  const alphabets = alphabetString.split('');
-  console.log(alphabets);
-
-  const randomNumber = Math.random() * 25;
-  const index = Math.round(randomNumber);
-
-  const alphabet = alphabets[index];
+  const alphabet = getRandomAlphabet();
   document.getElementById('current-alphabet').innerText = alphabet;
 
-  document.getElementById(alphabet).style.backgroundColor = 'orange';
+  setBackgroundColorById(alphabet, 'orange');
 };
