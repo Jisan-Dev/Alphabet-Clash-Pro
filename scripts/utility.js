@@ -28,3 +28,9 @@ const removeBackgroundColorById = (elementId) => {
   const element = document.getElementById(elementId);
   element.style.backgroundColor = '';
 };
+
+const getTextElementValueById = (elementId) => {
+  const elementTextValue = document.getElementById(elementId).innerText;
+  const value = parseInt(elementTextValue);
+  return value;
+};
